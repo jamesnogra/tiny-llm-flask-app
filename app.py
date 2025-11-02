@@ -3,11 +3,13 @@ from flask import Flask, request
 from dotenv import load_dotenv
 import time
 import os
+import json
 
 # Load variables from .env
 load_dotenv()
 
 PORT = int(os.getenv("PORT", 5000))
+TOKENS = json.loads(os.getenv("TOKENS", "[]"))
 model_path = "./qwen-2.5-500m-q8.gguf"
 
 app = Flask(__name__)
@@ -109,6 +111,9 @@ def answer_a_question(system_prompt, prompt):
 @app.route('/')
 def home():
     start = time.time()
+    token = request.args.get('token', 'NO_TOKEN')
+    if token not in TOKENS:
+        return {"status": "A valid token is required to use this service"}, 403
     prompt = request.args.get('prompt')
     system_prompt = request.args.get('system_prompt', get_system_role_content())
     return {
