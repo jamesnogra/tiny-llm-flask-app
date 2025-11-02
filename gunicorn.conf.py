@@ -20,8 +20,8 @@ max_requests_jitter = 50
 timeout = 30
 
 # Log files
-accesslog = "/var/www/html/test_small_llm/logs/access.log"
-errorlog = "/var/www/html/test_small_llm/logs/error.log"
+accesslog = "/var/www/html/tiny-llm-flask-app/logs/access.log"
+errorlog = "/var/www/html/tiny-llm-flask-app/logs/error.log"
 
 # Enable logging to stdout (optional)
 capture_output = True
