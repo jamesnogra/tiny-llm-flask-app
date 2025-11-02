@@ -2,6 +2,7 @@ from llama_cpp import Llama
 from flask import Flask, request
 from dotenv import load_dotenv
 import time
+import os
 
 # Load variables from .env
 load_dotenv()
