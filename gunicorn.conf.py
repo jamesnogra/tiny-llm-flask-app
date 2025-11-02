@@ -10,7 +10,7 @@ PORT = int(os.getenv("PORT", 5000))
 bind = f"0.0.0.0:{PORT}"
 
 # Number of worker processes (adjust to number of CPU cores)
-workers = 2
+workers = 1
 
 # Automatically restart workers if they consume too much memory
 max_requests = 1000
