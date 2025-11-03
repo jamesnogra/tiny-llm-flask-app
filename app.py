@@ -21,7 +21,8 @@ llm = Llama(
     # n_gpu_layers=-1 will offload all layers to GPU. 
     # Set to 0 if you want to run on CPU only.
     n_gpu_layers=0,
-    n_ctx=32768,           # Context window size
+    n_threads=2,
+    n_ctx=8192,           # Context window size
     verbose=False         # Set to True for more detailed output
 )
 print('Done loading model...')
