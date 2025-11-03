@@ -17,7 +17,7 @@ max_requests = 1000
 max_requests_jitter = 50
 
 # Timeout (seconds before a worker is killed and restarted)
-timeout = 600
+timeout = 1200
 
 # Log files
 accesslog = "/var/www/html/tiny-llm-flask-app/logs/access.log"
