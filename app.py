@@ -10,7 +10,7 @@ load_dotenv()
 
 PORT = int(os.getenv("PORT", 5000))
 TOKENS = json.loads(os.getenv("TOKENS", "[]"))
-model_path = "./qwen-2.5-500m-q8.gguf"
+model_path = int(os.getenv("MODEL", "./qwen-2.5-500m-q8.gguf"))
 
 app = Flask(__name__)
 
