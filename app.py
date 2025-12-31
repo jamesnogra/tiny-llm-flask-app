@@ -10,7 +10,7 @@ load_dotenv()
 
 PORT = int(os.getenv("PORT", 5000))
 TOKENS = json.loads(os.getenv("TOKENS", "[]"))
-model_path = os.getenv("MODEL", "./qwen-2.5-500m-q4.gguf")
+model_path = os.getenv("MODEL", "./qwen2.5-1.5b-instruct-q2_k.gguf")
 
 app = Flask(__name__)
 
@@ -18,11 +18,11 @@ app = Flask(__name__)
 print(f'Loading {model_path} model...')
 llm = Llama(
     model_path=model_path,
-    # n_gpu_layers=-1 will offload all layers to GPU. 
+    # n_gpu_layers=-1 will offload all layers to GPU.
     # Set to 0 if you want to run on CPU only.
     n_gpu_layers=0,
-    use_mmap=True,
     n_threads=4,
+    use_mmap=True,  # Memory-map the model
     n_ctx=1024,           # Context window size
     verbose=False         # Set to True for more detailed output
 )
@@ -114,7 +114,7 @@ def answer_a_question(system_prompt, prompt):
         response_stream = llm.create_chat_completion(
             messages=messages,
             max_tokens=256,
-            temperature=0.1,
+	    temperature=0.8,
             stream=True  # Enable streaming
         )
         
