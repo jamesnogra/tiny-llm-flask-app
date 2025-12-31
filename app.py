@@ -22,9 +22,9 @@ llm = Llama(
     # Set to 0 if you want to run on CPU only.
     n_gpu_layers=0,
     n_threads=4,
-    use_mmap=True,  # Memory-map the model
-    n_ctx=1024,           # Context window size
-    verbose=False         # Set to True for more detailed output
+    use_mmap=True, # Memory-map the model
+    n_ctx=1024,    # Context window size
+    verbose=False  # Set to True for more detailed output
 )
 print('Done loading model...')
 
@@ -114,7 +114,7 @@ def answer_a_question(system_prompt, prompt):
         response_stream = llm.create_chat_completion(
             messages=messages,
             max_tokens=256,
-	    temperature=0.8,
+            temperature=0.8,
             stream=True  # Enable streaming
         )
         
