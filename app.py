@@ -23,7 +23,7 @@ llm = Llama(
     n_gpu_layers=0,
     n_threads=4,
     use_mmap=True, # Memory-map the model
-    n_ctx=1024,    # Context window size
+    n_ctx=2048,    # Context window size
     verbose=False  # Set to True for more detailed output
 )
 print('Done loading model...')
