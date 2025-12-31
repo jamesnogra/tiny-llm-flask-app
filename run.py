@@ -5,7 +5,7 @@ import time
 # 1. Set the path to your downloaded GGUF model
 #
 # IMPORTANT: Update this path to where you saved the model file.
-model_path = "./flan-t5-base-q4.gguf"
+model_path = "./granite-4.0-h-350m-Q8_0.gguf"
 
 # 2. Initialize the Llama model
 print(f'Loading {model_path} model...')
