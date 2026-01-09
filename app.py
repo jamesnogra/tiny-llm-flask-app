@@ -11,6 +11,7 @@ load_dotenv()
 PORT = int(os.getenv("PORT", 5000))
 TOKENS = json.loads(os.getenv("TOKENS", "[]"))
 model_path = os.getenv("MODEL", "./qwen2.5-1.5b-instruct-q2_k.gguf")
+max_tokens = 2048
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ llm = Llama(
     n_gpu_layers=0,
     n_threads=4,
     use_mmap=True, # Memory-map the model
-    n_ctx=2048,    # Context window size
+    n_ctx=max_tokens,    # Context window size
     verbose=False  # Set to True for more detailed output
 )
 print('Done loading model...')
@@ -113,7 +114,7 @@ def answer_a_question(system_prompt, prompt):
         # Stream the response
         response_stream = llm.create_chat_completion(
             messages=messages,
-            max_tokens=256,
+            max_tokens=max_tokens,
             temperature=0.8,
             stream=True  # Enable streaming
         )
